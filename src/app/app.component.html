@@ -1,0 +1,5 @@
+<app-header></app-header>
+<div cdkDropListGroup fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-evenly space-evenly">
+  <app-list cdkDropList (cdkDropListDropped)="drop($event)" [title]="'ToDo'" [statuses]="toDoStatus"></app-list>
+  <app-list cdkDropList (cdkDropListDropped)="drop($event)" [title]="'Done'" [statuses]="doneStatus"></app-list>
+</div>

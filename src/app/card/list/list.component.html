@@ -1,0 +1,31 @@
+<div class="card-container">
+  <h3>{{ title }}</h3>
+  <mat-divider></mat-divider>
+  <mat-progress-bar *ngIf="(isLoading$ | async) === true" mode="indeterminate"></mat-progress-bar>
+  <ng-container *ngIf="cards$ | async as cards">
+    <ng-container *ngIf="!cards.length; then noCards; else hasCards"></ng-container>
+
+    <ng-template  #hasCards>
+      <div fxFLex="row" fxLayoutAlign="center center">
+        <button mat-button color="accent" (click)="openAll(cards)">Expand All</button>
+        <button mat-button color="accent" (click)="closeAll(cards)">Collapse All</button>
+        <button mat-button color="accent" (click)="moveAll(cards)">Move All</button>
+      </div>
+    </ng-template>
+
+    <ng-template #noCards>
+      <div *ngIf="(isLoading$ | async) === false" fxLayout="column" fxLayoutAlign="space-around center" class="empty">
+        <span>The list is empty</span>
+        <mat-icon class="empty-icon">assignment_late</mat-icon>
+      </div>
+    </ng-template>
+    <mat-accordion multi>
+        <app-item
+        *ngFor="let card of cards"
+        [card]="card"
+        [data]="card"
+        cdkDrag
+        class="item"></app-item>
+     </mat-accordion>
+  </ng-container>
+</div>

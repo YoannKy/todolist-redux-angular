@@ -1,0 +1,20 @@
+<mat-expansion-panel (click)="setExpanded(!card.expanded)" [expanded]="card.expanded">
+  <mat-expansion-panel-header fxLayout="row">
+      <mat-panel-title [innerHTML]="card.patient_name | highlight: (searchWord$ | async)">
+    </mat-panel-title>
+    <mat-panel-description class="description">
+      {{ card.created_date }}
+      <mat-icon [ngStyle]="{'color': colorByStatus[card.status]}" [matTooltip]="card.status">{{ iconByStatus[card.status] }}</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-list>
+    <div mat-subheader>Arrhythmias</div>
+    <mat-list-item *ngFor="let arrhythmia of card.arrhythmias">
+      <mat-icon [ngStyle]="{ 'color': 'orange'}" mat-list-icon>local_hospital</mat-icon>
+      <div mat-line [innerHTML]="arrhythmia | highlight: (searchWord$ | async)"></div>
+    </mat-list-item>
+  </mat-list>
+  <mat-action-row>
+   <button mat-button color="primary" (click)="move(card)">Move</button>
+ </mat-action-row>
+</mat-expansion-panel>

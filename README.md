@@ -1,6 +1,18 @@
 # CardiologsAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0. 
+
+## Setup
+
+This project works on node 12.22.12
+
+Make sure nvm is installed (https://github.com/nvm-sh/nvm#installing-and-updating) 
+
+then
+
+```
+nvm use
+```
 
 ## Development server
 
